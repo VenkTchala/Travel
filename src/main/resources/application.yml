@@ -1,0 +1,21 @@
+
+driverClassName: org.sqlite.JDBC
+url: jdbc:sqlite:mydb.sqlite
+username: sa
+password: sa
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  mvc:
+    format:
+      date: dd/MM/yyyy
+      time: HH:mm:ss
+      date-time: yyyy-MM-dd HH:mm:ss
+
+
+  rsa:
+    private-key: classpath:certs/private.pem
+    public-key: classpath:certs/public.pem
