@@ -17,6 +17,9 @@ public class TravelOfferDto {
     private String destinationCity;
     private String airline;
     private Long available;
+    private String departureTime;
+    private String arrivalTime;
+    private String totalTime;
     private Long connections;
     private Long price;
 }

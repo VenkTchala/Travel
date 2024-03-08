@@ -16,4 +16,5 @@ public class TravelFilters {
     private String origin;
     private String destination;
     private LocalDate date;
+    private String currencyCode;
 }

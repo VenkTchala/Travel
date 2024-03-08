@@ -23,6 +23,10 @@ public class TravelOffer {
     private String destinationCity;
     private String airline;
     private Long available;
+    private String departureTime;
+    private String arrivalTime;
+    private String totalTime;
     private Long connections;
+    private String connectionCity;
     private Long price;
 }

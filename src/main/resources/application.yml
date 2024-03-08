@@ -16,6 +16,6 @@ spring:
       date-time: yyyy-MM-dd HH:mm:ss
 
 
-  rsa:
-    private-key: classpath:certs/private.pem
-    public-key: classpath:certs/public.pem
+#  rsa:
+#    private-key: classpath:certs/private.pem
+#    public-key: classpath:certs/public.pem

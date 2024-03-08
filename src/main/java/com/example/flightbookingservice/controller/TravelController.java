@@ -1,14 +1,13 @@
 package com.example.flightbookingservice.controller;
 
+import com.example.flightbookingservice.dto.BookingData;
+import com.example.flightbookingservice.dto.BookingResponse;
 import com.example.flightbookingservice.dto.TravelFilters;
 import com.example.flightbookingservice.dto.TravelOfferBookingDto;
-import com.example.flightbookingservice.dto.TravelOfferDto;
 import com.example.flightbookingservice.service.TravelService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,18 +16,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TravelController {
     private final TravelService travelService;
-    @GetMapping ("/")
-    public List<TravelOfferDto> getTravelOffers(){
-        return  travelService.getallOffers();
-    }
-    @GetMapping("/bookings")
-    public List<TravelOfferBookingDto> getTravelBookings(){
-        return travelService.getAllFlights();
-    }
-
-    @GetMapping("/filter")
+    @PostMapping("/filter")
     public List<TravelOfferBookingDto> getFilteredBookings(@RequestBody TravelFilters filters){
         return  travelService.filterFlights(filters);
     }
-
+    @PostMapping("/bookticket")
+    public BookingResponse bookTicket(Authentication authentication, @RequestParam Long id, @RequestBody BookingData data){
+        return travelService.bookTicket(authentication.getName(),data,id);
+    }
+    @GetMapping("/userbookings")
+    public List<TravelOfferBookingDto> userBookings (Authentication authentication,@RequestParam String code){
+        return travelService.getUserTravelBookings(authentication.getName(),code);
+    }
 }
